@@ -1,13 +1,10 @@
 #include <iostream>
 using namespace std;
-
-
 struct Node {
     int data;
     struct Node* left;
     struct Node* right;
 };
-
 // insertion
 struct Node* insert(struct Node* root, int val) {
     if (root == NULL) {
