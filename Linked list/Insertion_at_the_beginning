@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+struct Node{
+    int data;
+    struct Node* next;
+};
+void insert_in_the_begining(struct Node **head_ref,int elemtent)
+{
+    struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
+    newNode->data=elemtent;
+    newNode->next=*head_ref;
+    *head_ref=newNode;
+}
+void printlist(struct Node* head)
+{
+    struct Node *temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+int main()
+{
+    struct Node* head=NULL;
+    int n,element;
+    cin>>n;
+    
+    for(int i=1;i<=n;i++)
+    {
+        cin>>element;
+        insert_in_the_begining(&head,element);
+    }
+    printlist(head);
+    return 0;
+}
