@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+struct Node{
+    int data;
+    struct Node* next;
+};
+void insert_at_beginning(struct Node** head_ref,int element)
+{
+    struct Node* newNode=new Node;
+    newNode->data=element;
+    newNode->next=*head_ref;
+    *head_ref=newNode;
+}
+void print_list(struct Node *head)
+{
+    struct Node* temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+    
+}
+void delet_at_the_beginning(struct Node** head_ref)
+{
+    struct Node* temp=*head_ref;
+    *head_ref=temp->next;
+    free(temp);
+    
+}
+int main()
+{
+    struct Node* head=NULL;
+    int n,element;
+    cin>>n;
+    for(int i=1;i<=n;i++)
+    {
+        cin>>element;
+        insert_at_beginning(&head,element);
+    }
+    cout<<"Before deletion of element: "<<endl;
+    print_list(head);
+    cout<<"\n";
+    cout<<"After deletion of element: "<<endl;
+    delet_at_the_beginning(&head);
+    print_list(head);
+    return 0;
+}
